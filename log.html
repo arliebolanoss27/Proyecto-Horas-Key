@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Key Hours</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4361ee, #7209b7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 40px 50px;
+      text-align: center;
+      width: 360px;
+    }
+
+    h1 {
+      background: linear-gradient(135deg, #4361ee, #7209b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(135deg, #4361ee, #7209b7);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover { opacity: 0.9; }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>Key Hours</h1>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Correo institucional" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button type="submit">Ingresar</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </div>
+
+  <script>
+    // Usuarios válidos
+    const validUsers = {
+      "estudiante@keyinstitute.edu.sv": "password",
+      "supervisor@keyinstitute.edu.sv": "password",
+      "admin@keyinstitute.edu.sv": "password"
+    };
+
+    // Validar login
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (validUsers[email] && validUsers[email] === password) {
+        // ✅ Redirigir a prueba3.html
+        window.location.href = "prueba3.html";
+      } else {
+        // ❌ Mostrar error
+        errorMsg.textContent = "Usuario o contraseña incorrectos";
+      }
+    });
+  </script>
+</body>
+</html>
